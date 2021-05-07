@@ -23,10 +23,7 @@ DROP TABLE IF EXISTS `games`;
 CREATE TABLE IF NOT EXISTS `games` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `seed` varchar(256) NOT NULL,
-  `creatorId` int(11) DEFAULT NULL,
-  PRIMARY KEY (`ID`),
-  KEY `game_creatorId` (`creatorId`),
-  CONSTRAINT `game_creatorId` FOREIGN KEY (`creatorId`) REFERENCES `users` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Listage des données de la table superblinder.games : ~0 rows (environ)
