@@ -26,6 +26,7 @@
     <!-- Custom styles for this template -->
     <link href="view/content/css/agency.css" rel="stylesheet">
     <link href="view/content/css/custom.css" rel="stylesheet">
+    <link href="view/content/css/pages.css" rel="stylesheet">
 </head>
 
 <body id="page-top">

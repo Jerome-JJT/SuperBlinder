@@ -1,0 +1,68 @@
+
+#login-page {
+  height: 600px;
+
+  margin: 20px;
+}
+
+@media (max-width: 800px)
+{
+  #login-page
+  {
+    margin: 20px 5px;
+  }
+}
+
+#login-page h3 {
+  text-align: center;
+}
+
+.login-table {
+  width: 100%;
+
+  text-align: center;
+  border-collapse: separate;
+  border-spacing: 10px 30px;
+}
+
+
+.login-block {
+  width: 49.5%;
+  height: 90%;
+
+  display:inline-block;
+  vertical-align:top;
+
+  margin-top: 60px;
+}
+
+.login-bar {
+  width: 1%;
+  height: 80%;
+
+  display:inline-block;
+  vertical-align:top;
+
+  margin-top: 20px;
+
+  background-color: black;
+
+  border-radius: 80% / 80%;
+}
+
+
+.page-center {
+  width: 96%;
+
+  margin: 2%;
+  border: 2px solid black;
+
+  padding: 20px 4% 0 4%;
+
+  background-color: red;
+}
+
+.generator-tricols > div {
+  display: inline-block;
+  vertical-align: top;
+}
