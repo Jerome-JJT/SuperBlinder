@@ -30,23 +30,23 @@
 
 <body id="page-top">
   <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav" style="background-color:#A000A0;">
-    <div id="head2" class="navbar-content" style="text-align: center;">
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav" style="background-color:#AAAAAA;">
+    <div class="navbar-content" style="text-align: center;">
         <a href="/"><img height="100%" src="/view/content/img/logo.png"></a>
     </div
 
-    ><div id="head3" class="navbar-content" style="display: flex; padding-top: 20px">
-      <div style="display: inline-block; flex: 1;">
+    ><div id="side-header" class="navbar-content">
+      <div>
         <h3>Username</h3>
       </div
 
-      ><div style="display: inline-block; flex: 1; font-size: 14px">
+      ><div style="font-size: 14px">
         Créé le 1 janvier 1900<br>
         42% de bonnes réponses
       </div
 
-      ><div style="display: inline-block; flex: 1;">
-        <button>Upload</button>
+      ><div>
+        <button class="btn btn-grey">Upload</button>
       </div>
     </div>
   </nav>

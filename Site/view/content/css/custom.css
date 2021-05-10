@@ -1,7 +1,6 @@
 
 .navbar {
   display: flex;
-  flex-direction: row;
 }
 
 .navbar-content {
@@ -10,9 +9,20 @@
   text-align: center;
 }
 
+#side-header {
+  display: flex;
+
+  padding-top: 20px;
+}
+
+#side-header div {
+  flex: 1;
+}
+
 @media (min-width: 1020px) /* VERY SMOL */
 {
   .navbar-content {
+    flex-direction: row;
     flex: 1;
   }
 }
@@ -27,7 +37,8 @@
     width: 100%;
   }
 
-  #head3 {
-    padding: 0 10%;
+  #side-header {
+    padding-left: 10%;
+    padding-right: 10%;
   }
 }
