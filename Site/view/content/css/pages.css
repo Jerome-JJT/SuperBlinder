@@ -59,10 +59,14 @@
 
   padding: 20px 4% 0 4%;
 
-  background-color: red;
+  background-color: #999999;
 }
 
 .generator-tricols > div {
   display: inline-block;
   vertical-align: top;
+}
+
+.generator-tricols table {
+  width: 100%;
 }

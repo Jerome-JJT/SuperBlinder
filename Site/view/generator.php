@@ -24,12 +24,12 @@ $title = "SuperBlinder - Générateur";
           <col width="50%">
 
           <tr>
-            <td><label for="difficulty">Difficulté</label></td>
-            <td><input id="difficulty" name="difficulty" type="range" min="1" max="5" value="3"></td>
+            <td><label for="difficulty"><strong id="difficulty-text">Normal</strong></label></td>
+            <td><input id="difficulty" name="difficulty" type="range" onchange="updateText()" min="1" max="5" value="3"></td>
           </tr>
 
           <tr>
-            <td><label for="trackNb">Nombre</label></td>
+            <td><label for="trackNb"><strong>Nombre</strong></label></td>
             <td>
               <select id="trackNb" name="trackNb">
                 <option>10</option>
@@ -39,7 +39,7 @@ $title = "SuperBlinder - Générateur";
           </tr>
 
           <tr>
-            <td><label for="type">Types</label></td>
+            <td><label for="type"><strong>Types</strong></label></td>
             <td>
               <select id="type" name="type">
                 <option>Tous</option>
@@ -79,7 +79,7 @@ $title = "SuperBlinder - Générateur";
           <col width="50%">
 
           <tr>
-            <td><label for="code">Code</label></td>
+            <td><label for="code"><strong>Code</strong></label></td>
             <td><input id="code" name="code" type="text"></td>
           </tr>
 
@@ -92,12 +92,49 @@ $title = "SuperBlinder - Générateur";
     </div>
   </div>
   <br>
+  <br>
 </div>
 
 <h2 style="text-align: center">Règles du jeu</h2>
 <p style="margin: 0 4%">
   Règles :
 </p>
+
+
+
+<script>
+  function updateText()
+  {
+    let text = document.getElementById("difficulty-text");
+
+    let value = document.getElementById("difficulty").value;
+
+    switch(value)
+    {
+      case "1":
+        text.textContent = "Facile";
+        break;
+
+      case "2":
+        text.textContent = "Facile-Normal";
+        break;
+
+      default:
+      case "3":
+        text.textContent = "Normal";
+        break;
+
+      case "4":
+        text.textContent = "Normal-Difficile";
+        break;
+
+      case "5":
+        text.textContent = "Difficile";
+        break;
+    }
+  }
+
+</script>
 
 
 
