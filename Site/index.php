@@ -16,19 +16,35 @@ if(isset($_GET["action"]) && $logged)
       break;
   }
 }
-else if(isset($_GET["page"]) && $logged)
+else if(isset($_GET["page"])/* && $logged*/)
 {
   switch($_GET["page"])
   {
-    case "upload":
+    case "gabarit":
+      require("view/template.php");
+      break;
+
+    case "connection":
+      require("view/connection.php");
+      //displayUpload();
+      break;
+
+    case "generate":
+      require("view/generator.php");
       //displayUpload();
       break;
 
     case "play":
+      require("view/play.php");
       //displayUpload();
       break;
 
-    default:
+    case "upload":
+      require("view/upload.php");
+      //displayUpload();
+      break;
+
+    //default:
       //displayGenerator();
 
   }

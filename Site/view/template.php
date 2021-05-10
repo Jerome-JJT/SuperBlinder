@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <meta name="viewport" content="user-scalable=yes, initial-scale=0.61">
 
-    <title><?=$titre?></title>
+    <title><?= $title != null ? $title : "SuperBlinder" ?></title>
 
     <!-- Bootstrap core CSS -->
     <!--<link href="view/content/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">-->
@@ -52,13 +52,13 @@
   </nav>
 
   <div class="page-content">
-      <?= ""//$contenu ?>
+      <?= isset($content) ? $content : "" ?>
   </div>
 </body>
 
 
 <!-- Footer -->
-<footer style="<?=$fixedFooter?>">
+<footer>
     <!--<footer style="background-image: linear-gradient(#888888, #555555)">-->
     <div class="container">
         <div class="row">
@@ -101,4 +101,7 @@
         </div>
     </div>
 </footer>
+
+<script src="view/content/js/jquery.min.js"></script>
+<script src="view/content/js/bootstrap.bundle.min.js"></script>
 </html>
