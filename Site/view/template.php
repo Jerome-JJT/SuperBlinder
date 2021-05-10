@@ -31,29 +31,24 @@
 <body id="page-top">
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav" style="background-color:#A000A0;">
-    <!--<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav" style="background-image: linear-gradient(#D000D0, #A000A0)">-->
-    <!--<div class="container">-->
-      <div class="nav-content">
-      </div>
+    <div id="head2" class="navbar-content" style="text-align: center;">
+        <a href="/"><img height="100%" src="/view/content/img/logo.png"></a>
+    </div
 
-      <div class="nav-content">
-        <div id="title" style="height: 80px">
-          <a href="/">
-            <img src="/view/content/img/logo.png">
-          </a>
-        </div>
-      </div>
+    ><div id="head3" class="navbar-content" style="display: flex; padding-top: 20px">
+      <div style="display: inline-block; flex: 1;">
+        <h3>Username</h3>
+      </div
 
-      <div class="nav-content" id="side-info">
-        <div class="nav-info" style="width:60%;">
-          Créé le 1 javnier 1900<br>
-          42% de bonnes réponses
-        </div
+      ><div style="display: inline-block; flex: 1; font-size: 14px">
+        Créé le 1 janvier 1900<br>
+        42% de bonnes réponses
+      </div
 
-        ><div class="nav-info" style="width:30%;">
-          <button>Upload</button>
-        </div>
+      ><div style="display: inline-block; flex: 1;">
+        <button>Upload</button>
       </div>
+    </div>
   </nav>
 
   <div class="page-content">

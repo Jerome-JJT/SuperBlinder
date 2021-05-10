@@ -1,32 +1,33 @@
-#title
-{
-  width: 100%;
-  height: 40px;
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+}
+
+.navbar-content {
+  height: 80px;
 
   text-align: center;
 }
-#title img {
-  max-width: 400px;
-  width: 90%;
-}
 
-.nav-content {
-  display: inline-block;
-
-  width: 33%;
-}
-
-.nav-info {
-   display:inline-block;
-   vertical-align: top;
-}
-#side-info {
-  margin-left: 10%;
-}
-
-@media (max-width: 960px) /* VERY SMOL */
+@media (min-width: 1020px) /* VERY SMOL */
 {
-  .nav-content {
+  .navbar-content {
+    flex: 1;
+  }
+}
+
+@media (max-width: 1020px) /* VERY SMOL */
+{
+  .navbar {
+    flex-direction: column;
+  }
+
+  .navbar-content {
     width: 100%;
+  }
+
+  #head3 {
+    padding: 0 10%;
   }
 }
