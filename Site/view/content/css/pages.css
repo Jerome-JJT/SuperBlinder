@@ -57,7 +57,7 @@
   margin: 2%;
   border: 2px solid black;
 
-  padding: 20px 4% 0 4%;
+  padding: 20px 4% 20px 4%;
 
   background-color: #999999;
 }
@@ -69,4 +69,87 @@
 
 .generator-tricols table {
   width: 100%;
+}
+
+.selection {
+  text-align: center;
+}
+
+.selection > div {
+   display:inline-block;
+   vertical-align: top;
+
+   width: 30.33%;
+   height: 50px;
+
+   margin: 1% 1%;
+
+   border: 2px solid black;
+   border-radius: 10px;
+
+   overflow: hidden;
+
+   background-color: orange;
+}
+
+.selection > div:hover {
+  color: white;
+  background-color: black;
+
+  border-color: white;
+}
+
+.selection > div > div {
+   width: 100%;
+   height: 100%;
+
+   min-width: 100px;
+
+   margin-left: 50%;
+   transform: translateX(-50%);
+
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+
+.game-container {
+  display: flex;
+  height: 100%;
+
+  flex-direction: column;
+  justify-content: center;
+}
+
+.video-container {
+  display: flex;
+  flex: 1;
+
+  align-items: center;
+}
+
+.game-side {
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.game-list {
+  min-height: 40px;
+
+  flex: 1;
+
+  overflow-y: scroll;
+
+  background-color: #dddddd;
+}
+
+.game-list div {
+  height: 30px;
+
+  margin: 4px 0;
+
+  white-space: nowrap;
 }
