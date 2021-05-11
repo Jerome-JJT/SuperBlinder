@@ -19,20 +19,22 @@ $title = "SuperBlinder - Connexion";
     <form method="POST" action="?action=loginAccount">
       <table class="login-table">
         <tr>
-          <th>Adresse mail</th>
+          <td>Adresse mail</td>
 
           <td><input type="text" name="email" value="" required></td>
         </tr>
         <tr>
-          <th>Mot de passe</th>
+          <td>Mot de passe</td>
 
           <td><input type="password" name="password" required></td>
         </tr>
 
         <tr>
-          <td colspan="2">
-            <button type="submit" class="mybutton">Login</button>
-            <a href="mailto:jerome.jaquemet@cpnv.ch"><button type="button" class="mybutton">Mot de passe oublié</button></a>
+          <td>
+            <button type="button" style="font-size: 14px" onclick="window.location = 'mailto:jerome.jaquemet@cpnv.ch'">Mot de passe oublié</button>
+          </td>
+          <td>
+            <button type="submit">Login</button>
           </td>
         </tr>
       </table>
@@ -48,28 +50,29 @@ $title = "SuperBlinder - Connexion";
     <form method="POST" action="?action=createAccount">
       <table class="login-table">
         <tr>
-          <th>Adresse mail</th>
+          <td>Adresse mail</td>
 
           <td><input type="text" name="email" value="" required></td>
         </tr>
         <tr>
-          <th>Username</th>
+          <td>Username</td>
 
           <td><input type="text" name="username" value="" required></td>
         </tr>
         <tr>
-          <th>Mot de passe</th>
+          <td>Mot de passe</td>
 
           <td><input type="password" name="password" required></td>
         </tr>
         <tr>
-          <th>Répéter le mot de passe</th>
+          <td>Répéter le mot de passe</td>
 
           <td><input type="password" name="repeatPassword" required></td>
         </tr>
         <tr>
-          <td colspan="2">
-            <button type="submit" class="mybutton">Créer</button>
+          <td></td>
+          <td>
+            <button type="submit">Créer</button>
           </td>
         </tr>
       </table>
