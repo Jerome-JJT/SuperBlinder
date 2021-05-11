@@ -15,7 +15,7 @@ $title = "SuperBlinder - Jeu";
   ><div style="width: 50%; height: 100%;">
     <div class="game-container">
       <div class="video-container">
-        <video style="width: 100%; max-height: 400px" autoplay>
+        <video style="width: 100%; max-height: 400px">
          <source src="/view/content/vids/audio.mp4" type="video/mp4">
         </video>
       </div>
