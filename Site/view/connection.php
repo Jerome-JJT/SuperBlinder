@@ -21,7 +21,7 @@ $title = "SuperBlinder - Connexion";
         <tr>
           <td>Adresse mail</td>
 
-          <td><input type="text" name="email" value="" required></td>
+          <td><input type="email" name="email" value="" required></td>
         </tr>
         <tr>
           <td>Mot de passe</td>
@@ -52,7 +52,7 @@ $title = "SuperBlinder - Connexion";
         <tr>
           <td>Adresse mail</td>
 
-          <td><input type="text" name="email" value="" required></td>
+          <td><input type="email" name="email" value="" required></td>
         </tr>
         <tr>
           <td>Username</td>

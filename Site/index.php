@@ -6,7 +6,7 @@ session_start();
 
 
 
-
+/*
 if(isset($_GET["action"]) && $logged)
 {
   switch($_GET["action"])
@@ -16,7 +16,7 @@ if(isset($_GET["action"]) && $logged)
       break;
   }
 }
-else if(isset($_GET["page"])/* && $logged*/)
+else */if(isset($_GET["page"])/* && $logged*/)
 {
   switch($_GET["page"])
   {
