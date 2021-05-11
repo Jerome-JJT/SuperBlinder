@@ -2,7 +2,7 @@
 
 ob_start();
 
-$title = "SuperBlinder - Générateur";
+$title = "SuperBlinder - Jeu";
 
 ?>
 
@@ -21,7 +21,7 @@ $title = "SuperBlinder - Générateur";
       </div>
 
 
-      <div class="selection" style="margin-bottom: 30px">
+      <div class="selection" style="margin-bottom: 30px; visibility: hidden">
         <div><div style="">Star Wars</div></div
         ><div><div>Narnia</div></div
         ><div><div>Seigneur des anneaux</div></div>
@@ -51,7 +51,13 @@ $title = "SuperBlinder - Générateur";
   </div>
 </div>
 
-
+<script>
+  document.getElementsByTagName("body")[0].onclick = function()
+  {
+    document.getElementsByTagName("video")[0].play();
+    document.getElementsByClassName("selection")[0].style.visibility = "visible";
+  }
+</script>
 
 
 <?php
