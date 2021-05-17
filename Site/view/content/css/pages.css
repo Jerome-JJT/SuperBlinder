@@ -71,11 +71,11 @@
   width: 100%;
 }
 
-.selection {
+#selection {
   text-align: center;
 }
 
-.selection > div {
+#selection > div {
    display:inline-block;
    vertical-align: top;
 
@@ -92,14 +92,14 @@
    background-color: orange;
 }
 
-.selection > div:hover {
+#selection > div:hover {
   color: white;
   background-color: black;
 
   border-color: white;
 }
 
-.selection > div > div {
+#selection > div > div {
    width: 100%;
    height: 100%;
 
@@ -107,6 +107,10 @@
 
    margin-left: 50%;
    transform: translateX(-50%);
+
+   font-size: min(1rem, 2vw);
+   line-height: 1;
+
 
    display: flex;
    justify-content: center;

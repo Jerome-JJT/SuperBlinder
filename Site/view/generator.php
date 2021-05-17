@@ -85,7 +85,7 @@ $title = "SuperBlinder - Générateur";
 
           <tr>
             <td></td>
-            <td><button type="submit">Rechercher</button></td>
+            <td><button type="submit">Chercher</button></td>
           </tr>
         </table>
       </form>

@@ -97,8 +97,9 @@ form button {
   border-radius: 8px;
 }
 form button:hover {
-  /*width: 80%;
-  height: 28px;
+  cursor: pointer;
 
-  border-radius: 8px;*/
+  color: white;
+  background-color: black;
+  border-color: black;
 }
