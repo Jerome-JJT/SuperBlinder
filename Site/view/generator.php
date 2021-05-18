@@ -9,10 +9,10 @@ $title = "SuperBlinder - Générateur";
 <div class="page-center">
 
   <div class="generator-tricols">
-    <h2 style="text-align: center">Nouveau blind test</h2>
+    <h2 style="text-align: center">Nouvelle partie</h2>
 
     <div style="width: 40%">
-      Choississez vos réglages pour votre blind test
+      Choississez vos réglages pour votre partie de blind test
     </div
 
     ><div style="width: 15%"></div
@@ -63,10 +63,10 @@ $title = "SuperBlinder - Générateur";
 
 
   <div class="generator-tricols">
-    <h2 style="text-align: center">Blind test déjà existant</h2>
+    <h2 style="text-align: center">Partie déjà existante</h2>
 
     <div style="width: 40%">
-      Vous pouvez rejoindre un blind test déjà généré si vous avez son code
+      Vous pouvez rejoindre une partie de blind test déjà générée si vous avez son code
     </div
 
     ><div style="width: 15%">
@@ -97,7 +97,12 @@ $title = "SuperBlinder - Générateur";
 
 <h2 style="text-align: center">Règles du jeu</h2>
 <p style="margin: 0 4%">
-  Règles :
+  Règles : Le but d'une partie de « blind-test » (« test à l'aveugle ») est de retrouver le titre et l'artiste des musiques ou chansons diffusées par la vidéo.
+  Vous gagnez un point par bonne réponse. Le but étant d'avoir le plus de points à la fin.
+
+  Pour jouer il vous suffit de démarre le blind test et de cliquer sur le site pour lancer la video. Il y aura certains boutons avec des titres de la catégorie choisie et il faudra choisir le bon et cliquer dessus.
+  Une fois le bouton cliqué ou bien le temps imparti fini, la video suivante est lancée.
+  L'historique est marqué à droite ainsi que le pourcentage de bonne réponse.
 </p>
 
 
