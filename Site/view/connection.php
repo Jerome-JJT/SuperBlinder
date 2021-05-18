@@ -4,12 +4,20 @@ ob_start();
 
 $title = "SuperBlinder - Connexion";
 
+$error = isset($error) ? $error : "";
+$email = isset($email) ? $email : "";
+$username = isset($username) ? $username : "";
+
 ?>
 
 
 <div id="login-page">
   <p style="text-align:center">
     Merci de vous connecter pour accéder au site
+  </p>
+
+  <p style="text-align:center; color: red">
+
   </p>
 
 
@@ -21,7 +29,7 @@ $title = "SuperBlinder - Connexion";
         <tr>
           <td>Adresse mail</td>
 
-          <td><input type="email" name="email" value="" required></td>
+          <td><input type="email" name="email" value="<?=$email?>" required></td>
         </tr>
         <tr>
           <td>Mot de passe</td>
@@ -52,12 +60,12 @@ $title = "SuperBlinder - Connexion";
         <tr>
           <td>Adresse mail</td>
 
-          <td><input type="email" name="email" value="" required></td>
+          <td><input type="email" name="email" value="<?=$email?>" required></td>
         </tr>
         <tr>
           <td>Username</td>
 
-          <td><input type="text" name="username" value="" required></td>
+          <td><input type="text" name="username" value="<?=$username?>" required></td>
         </tr>
         <tr>
           <td>Mot de passe</td>

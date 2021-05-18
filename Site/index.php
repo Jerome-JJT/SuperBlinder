@@ -5,7 +5,7 @@ session_start();
 //print_r($_SESSION);
 
 
-
+require("controler/views.php");
 /*
 if(isset($_GET["action"]) && $logged)
 {
@@ -56,16 +56,17 @@ else if(isset($_GET["action"]))
   switch($_GET["action"])
   {
     case "createAccount":
-      //createAccount($_POST);
+      require("controler/connections.php");
+      register($_POST);
       break;
 
     case "loginAccount":
-      //loginAccount($_POST);
+      require("controler/connections.php");
+      login($_POST);
       break;
   }
 }
 else
 {
-  require("view/template.php");
-  //displayConnection();
+  displayConnection();
 }
