@@ -1,7 +1,8 @@
 <?php
 
 
-function executeQuerySelect($query, $data = array()){
+function executeQuerySelect($query, $data = array())
+{
   $queryResult = array();
 
   //Open database connection
@@ -52,10 +53,11 @@ function openDBConnexion()
 
   try
   {
-    $tempDbConnexion = new PDO($dsn, $userName, $userPwd);
+    $dbConnection = new PDO($dsn, $userName, $userPwd);
   }
-  catch (PDOException $exception)
+  catch (PDOException $e)
   {
+    //echo("PDO error"); print_r($e); echo("<br>");
   }
 
   return $dbConnection;

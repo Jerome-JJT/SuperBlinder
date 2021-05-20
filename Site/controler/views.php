@@ -1,7 +1,7 @@
 <?php
 
 
-function displayConnection($error = "", $email = "", $suername = "")
+function displayConnection($error = "", $email = "", $username = "")
 {
   require("view/connection.php");
 }

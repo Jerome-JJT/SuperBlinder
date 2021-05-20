@@ -17,7 +17,7 @@ $username = isset($username) ? $username : "";
   </p>
 
   <p style="text-align:center; color: red">
-
+    <?=$error?>
   </p>
 
 
