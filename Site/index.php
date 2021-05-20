@@ -4,9 +4,10 @@ session_start();
 
 //print_r($_SESSION);
 
+$logged = isset($_SESSION["logInfo"]);
 
 require("controler/views.php");
-/*
+
 if(isset($_GET["action"]) && $logged)
 {
   switch($_GET["action"])
@@ -16,7 +17,7 @@ if(isset($_GET["action"]) && $logged)
       break;
   }
 }
-else */if(isset($_GET["page"])/* && $logged*/)
+else if(isset($_GET["page"]) && $logged)
 {
   switch($_GET["page"])
   {
@@ -48,6 +49,10 @@ else */if(isset($_GET["page"])/* && $logged*/)
       //displayGenerator();
 
   }
+}
+else if($logged)
+{
+  displayGenerator();
 }
 
 

@@ -1,3 +1,17 @@
+<?php
+
+$monthFr = array(0, "Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
+"Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre");
+
+$day = date("j", strtotime($_SESSION["logInfo"]["creationDate"]));
+$month = date("n", strtotime($_SESSION["logInfo"]["creationDate"]));
+$year = date("Y", strtotime($_SESSION["logInfo"]["creationDate"]));
+
+$month = $monthFr[$month];
+
+
+$creationDate = "Créé le ".$day." ".$month." ".$year;
+?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -36,19 +50,20 @@
         <a href="/"><img height="100%" src="/view/content/img/logo.png"></a>
     </div
 
-    ><div id="side-header" class="navbar-content">
-      <div>
-        <h3>Username</h3>
-      </div
+    ><?php if(isset($_SESSION["logInfo"])): ?><div id="side-header" class="navbar-content">
+        <div>
+          <h3><?=$_SESSION["logInfo"]["username"]?></h3>
+        </div
 
-      ><div style="font-size: 14px">
-        Créé le 1 janvier 1900<br>
-        42% de bonnes réponses
-      </div
+        ><div style="font-size: 14px">
+          <?=$creationDate?><br>
+          TODOTODO de bonnes réponses
+        </div
 
-      ><div>
-        <button class="btn btn-grey">Upload</button>
-      </div>
+        ><div>
+          <button class="btn btn-grey">Upload</button>
+        </div>
+      <?php endif ?>
     </div>
   </nav>
 
