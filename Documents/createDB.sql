@@ -74,7 +74,7 @@ CREATE TABLE IF NOT EXISTS `tracks` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(256) NOT NULL,
   `fullPath` varchar(256) NOT NULL,
-  `difficuly` enum('Facile','Normal','Difficile') NOT NULL DEFAULT 'Normal',
+  `difficulty` enum('Facile','Normal','Difficile') NOT NULL DEFAULT 'Normal',
   `type` enum('Film','Série','Autre') NOT NULL DEFAULT 'Autre',
   `creatorId` int(11) DEFAULT NULL,
   PRIMARY KEY (`ID`),
