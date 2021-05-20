@@ -3,13 +3,39 @@
 
 function login($postData)
 {
+  if(isset($postData["email"])
+  && isset($postData["password"]))
+  {
+    try
+    {
+      require_once("model/userManagement.php");
+      $result = loginUser($postData["email"], $postData["password"]);
 
+      if($result["success"])
+      {
+        $_SESSION["logInfo"] = getUserInfos($postData["email"]);
+        header("Location:/");
+      }
+      else
+      {
+        displayConnection($error = "Mot de passe faux", $email = $postData["email"]);
+      }
+    }
+    catch(EmailDoesntExistException $e)
+    {
+      displayConnection($error = "Utilisateur n'existe pas", $email = $postData["email"]);
+    }
+  }
+  else
+  {
+    displayConnection($error = "Erreur");
+  }
 }
+
 
 
 function register($postData)
 {
-  //print_r($postData);
   if(isset($postData["email"])
   && isset($postData["username"])
   && isset($postData["password"])
@@ -24,7 +50,11 @@ function register($postData)
 
         if($result)
         {
-          displayConnection($error = "Erreur", $email = $postData["email"], $username = $postData["username"]);
+          header("Location:/");
+        }
+        else
+        {
+          displayConnection($error = "Error", $email = $postData["email"], $username = $postData["username"]);
         }
       }
       catch(EmailAlreadyExistException $e)
