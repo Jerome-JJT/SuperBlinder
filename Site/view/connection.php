@@ -29,7 +29,7 @@ $username = isset($username) ? $username : "";
         <tr>
           <td>Adresse mail</td>
 
-          <td><input type="email" name="email" value="<?=$email?>" required></td>
+          <td><input type="email" name="email" value="<?=$email?>" required autocomplete="off"></td>
         </tr>
         <tr>
           <td>Mot de passe</td>
@@ -60,12 +60,12 @@ $username = isset($username) ? $username : "";
         <tr>
           <td>Adresse mail</td>
 
-          <td><input type="email" name="email" value="<?=$email?>" required></td>
+          <td><input type="email" name="email" value="<?=$email?>" required autocomplete="off"></td>
         </tr>
         <tr>
           <td>Username</td>
 
-          <td><input type="text" name="username" value="<?=$username?>" required></td>
+          <td><input type="text" name="username" value="<?=$username?>" required autocomplete="off"></td>
         </tr>
         <tr>
           <td>Mot de passe</td>
