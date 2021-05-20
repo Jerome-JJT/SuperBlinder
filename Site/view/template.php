@@ -103,6 +103,8 @@
     </div>
 </footer>
 
+<!--
 <script src="view/content/js/jquery.min.js"></script>
 <script src="view/content/js/bootstrap.bundle.min.js"></script>
+-->
 </html>
