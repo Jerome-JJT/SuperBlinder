@@ -72,6 +72,10 @@ else if(isset($_GET["action"]))
       break;
   }
 }
+else if(isset($_GET["page"]))
+{
+  header("Location:/"); exit();
+}
 else
 {
   displayConnection();
