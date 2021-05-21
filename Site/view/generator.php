@@ -4,12 +4,19 @@ ob_start();
 
 $title = "SuperBlinder - Générateur";
 
+
+$error = isset($_SESSION["filling"]["generationError"]) ? $_SESSION["filling"]["generationError"] : "";
+
 ?>
 
 <div class="page-center">
 
   <div class="generator-tricols">
     <h2 style="text-align: center">Nouvelle partie</h2>
+
+    <p style="text-align:center; color: red">
+      <?=$error?>
+    </p>
 
     <div style="width: 40%">
       Choississez vos réglages pour votre partie de blind test

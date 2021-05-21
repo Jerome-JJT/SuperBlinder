@@ -1,9 +1,10 @@
 <?php
 
+class GameGenerationException extends Exception { }
 
 function getTracks($gameType)
 {
-  $query = "SELECT id, difficulty FROM TRACKS";
+  $query = "SELECT id, title, fullPath, difficulty FROM TRACKS";
   $data = array();
 
   if($gameType == "movie")
@@ -22,28 +23,41 @@ function getTracks($gameType)
   return $result;
 }
 
-function insertGame($tracksIds)
+function getAllSeeds()
 {
-  $query = "SELECT id, difficulty FROM TRACKS";
+  $query = "SELECT seed FROM GAMES";
   $data = array();
-
-  foreach ($tracksIds as $id)
-  {
-    $data[] =
-  }
-
-  if($gameType == "movie")
-  {
-    $query.=" WHERE type = Movie";
-  }
-  else if($gameType == "serie")
-  {
-    $query.=" WHERE type = Serie";
-  }
-
 
   require_once("model/dbConnector.php");
   $result = executeQuerySelect($query, $data);
 
   return $result;
+}
+
+
+function insertGame($seed, $tracksIds)
+{
+  $query = "INSERT INTO GAMES (seed) VALUES (:seed)";
+
+  $data = array(":seed" => $seed);
+
+  $gameId = executeQueryAction($query, $data);
+
+  if($gameId == false)
+  {
+    throw new GameGenerationException();
+  }
+
+
+  $query = "INSERT INTO GAMES_TRACKS (gameId, trackId) VALUES (:gameId, :trackId)";
+  $data = array();
+
+  foreach ($tracksIds as $trackId)
+  {
+    $data[] = array(":gameId" => $gameId, ":trackId" => $trackId);
+  }
+
+  $result = executeQueryAction($query, $data, $repeat = true);
+
+  return $gameId;
 }

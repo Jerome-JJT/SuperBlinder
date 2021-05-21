@@ -42,12 +42,7 @@ function loginUser($userEmail, $userPassword)
 
   $success = password_verify($userPassword, $result["password"]);
 
-  return array("success" => $success, "data" => array(
-    "id" => $result["id"],
-    "email" => $result["email"],
-    "username" => $result["username"],
-    "creationDate" => $result["creationDate"])
-  );
+  return $success;
 }
 
 
