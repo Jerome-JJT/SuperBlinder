@@ -12,8 +12,9 @@ if(isset($_GET["action"]) && $logged)
 {
   switch($_GET["action"])
   {
-    case "generate":
-      //generateBlindTest();
+    case "generateGame":
+      require("controler/game.php");
+      generateGame($_POST);
       break;
   }
 }
@@ -22,17 +23,17 @@ else if(isset($_GET["page"]) && $logged)
   switch($_GET["page"])
   {
     case "gabarit":
-      require("view/template.php");
+      //require("view/template.php");
       break;
 
     case "connection":
-      require("view/connection.php");
+      //require("view/connection.php");
       //displayUpload();
       break;
 
     case "generate":
-      require("view/generator.php");
-      //displayUpload();
+      //require("view/generator.php");
+      //displayGenerator();
       break;
 
     case "play":
