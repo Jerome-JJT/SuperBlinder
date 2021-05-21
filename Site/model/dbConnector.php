@@ -21,20 +21,32 @@ function executeQuerySelect($query, $data = array())
 }
 
 
-function executeQueryAction($query, $data = array())
+function executeQueryAction($query, $data = array(), $repeat = false)
 {
   //Open database connection
   $pdo = openDBConnexion();
+  $result = true;
 
   if ($pdo != null)
   {
     $stm = $pdo->prepare($query);
-    $result = $stm->execute($data);
+    if(!$repeat)
+    {
+      $stm->execute($data);
+      $result = $pdo->lastInsertId();
+    }
+    else
+    {
+      foreach ($data as $value)
+      {
+        $result &= $stm->execute($value);
+      }
+    }
   }
 
   //Close database connection
   $pdo = null;
-  return ($result !== false);
+  return $result;
 }
 
 
