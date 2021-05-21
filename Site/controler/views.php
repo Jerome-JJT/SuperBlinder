@@ -6,7 +6,7 @@ function displayConnection($error = "", $email = "", $username = "")
   require("view/connection.php");
 }
 
-function displayGenerator()
+function displayGenerator($error = "")
 {
   require("view/generator.php");
 }

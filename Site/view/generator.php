@@ -18,7 +18,7 @@ $title = "SuperBlinder - Générateur";
     ><div style="width: 15%"></div
 
     ><div style="width: 45%">
-      <form method="POST" action="?action=createGame">
+      <form method="POST" action="?action=generateGame">
         <table>
           <col width="50%">
           <col width="50%">
@@ -32,8 +32,8 @@ $title = "SuperBlinder - Générateur";
             <td><label for="trackNb"><strong>Nombre</strong></label></td>
             <td>
               <select id="trackNb" name="trackNb">
-                <option>10</option>
-                <option>20</option>
+                <option value="10">10</option>
+                <option value="20">20</option>
               </select>
             </td>
           </tr>
@@ -42,9 +42,9 @@ $title = "SuperBlinder - Générateur";
             <td><label for="type"><strong>Types</strong></label></td>
             <td>
               <select id="type" name="type">
-                <option>Tous</option>
-                <option>Films</option>
-                <option>Séries</option>
+                <option value="all">Tous</option>
+                <option value="movie">Films</option>
+                <option value="serie">Séries</option>
               </select>
             </td>
           </tr>
