@@ -1,12 +1,12 @@
 <?php
 
 
-function displayConnection($error = "", $email = "", $username = "")
+function displayConnection()
 {
   require("view/connection.php");
 }
 
-function displayGenerator($error = "")
+function displayGenerator()
 {
   require("view/generator.php");
 }

@@ -1,16 +1,22 @@
 <?php
 
-$monthFr = array(0, "Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
-"Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre");
+if(isset($_SESSION["logInfo"]))
+{
+  $monthFr = array(0, "Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
+  "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre");
 
-$day = date("j", strtotime($_SESSION["logInfo"]["creationDate"]));
-$month = date("n", strtotime($_SESSION["logInfo"]["creationDate"]));
-$year = date("Y", strtotime($_SESSION["logInfo"]["creationDate"]));
+  $day = date("j", strtotime($_SESSION["logInfo"]["creationDate"]));
+  $month = date("n", strtotime($_SESSION["logInfo"]["creationDate"]));
+  $year = date("Y", strtotime($_SESSION["logInfo"]["creationDate"]));
 
-$month = $monthFr[$month];
+  $month = $monthFr[$month];
 
 
-$creationDate = "Créé le ".$day." ".$month." ".$year;
+  $creationDate = "Créé le ".$day." ".$month." ".$year;
+}
+
+if(isset($_SESSION["filling"])) { unset($_SESSION["filling"]); }
+
 ?>
 
 <!DOCTYPE html>

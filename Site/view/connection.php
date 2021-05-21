@@ -4,9 +4,10 @@ ob_start();
 
 $title = "SuperBlinder - Connexion";
 
-$error = isset($error) ? $error : "";
-$email = isset($email) ? $email : "";
-$username = isset($username) ? $username : "";
+$success = isset($_SESSION["filling"]["success"]) ? $_SESSION["filling"]["success"] : "";
+$error = isset($_SESSION["filling"]["connectionError"]) ? $_SESSION["filling"]["connectionError"] : "";
+$email = isset($_SESSION["filling"]["email"]) ? $_SESSION["filling"]["email"] : "";
+$username = isset($_SESSION["filling"]["username"]) ? $_SESSION["filling"]["username"] : "";
 
 ?>
 
@@ -18,6 +19,9 @@ $username = isset($username) ? $username : "";
 
   <p style="text-align:center; color: red">
     <?=$error?>
+  </p>
+  <p style="text-align:center; color: green">
+    <?=$success?>
   </p>
 
 
