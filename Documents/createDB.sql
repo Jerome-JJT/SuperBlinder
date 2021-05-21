@@ -34,7 +34,7 @@ DELETE FROM `games`;
 -- Listage de la structure de la table superblinder. games_tracks
 DROP TABLE IF EXISTS `games_tracks`;
 CREATE TABLE IF NOT EXISTS `games_tracks` (
-  `ID` int(11) NOT NULL,
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
   `gameId` int(11) NOT NULL,
   `trackId` int(11) NOT NULL,
   PRIMARY KEY (`ID`),
