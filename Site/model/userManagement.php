@@ -6,7 +6,7 @@ class EmailDoesntExistException extends Exception { }
 
 function getUserInfos($userEmail)
 {
-  $query = "SELECT id, email, username, creationDate FROM USERS WHERE email = :email";
+  $query = "SELECT id, email, username, creationDate FROM users WHERE email = :email";
   $data = array(":email" => $userEmail);
 
   require_once("model/dbConnector.php");
@@ -28,7 +28,7 @@ function getUserInfos($userEmail)
 
 function loginUser($userEmail, $userPassword)
 {
-  $query = "SELECT id, email, username, password, creationDate FROM USERS WHERE email = :email";
+  $query = "SELECT id, email, username, password, creationDate FROM users WHERE email = :email";
   $data = array(":email" => $userEmail);
 
   require_once("model/dbConnector.php");
@@ -49,11 +49,11 @@ function loginUser($userEmail, $userPassword)
 
 function createUser($userEmail, $userName, $userPassword)
 {
-  $query = "SELECT COUNT(id) AS count FROM USERS WHERE email = :email";
+  $query = "SELECT COUNT(id) AS count FROM users WHERE email = :email";
   $data = array(":email" => $userEmail);
 
   require_once("model/dbConnector.php");
-  $emailExist = executeQuerySelect($query, $data)[0];
+  $emailExist = executeQuerySelect($query, $data);
 
   if($emailExist["count"] > 0)
   {
@@ -64,7 +64,7 @@ function createUser($userEmail, $userName, $userPassword)
   $hashedPassword = password_hash($userPassword, PASSWORD_BCRYPT);
   $creationDate = date("Y-m-d");
 
-  $query = "INSERT INTO USERS (email, username, password, creationDate)
+  $query = "INSERT INTO users (email, username, password, creationDate)
   VALUES (:email, :username, :password, :creationDate)";
 
   $data = array(":email" => $userEmail, ":username" => $userName,

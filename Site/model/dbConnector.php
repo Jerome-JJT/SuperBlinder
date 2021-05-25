@@ -58,9 +58,9 @@ function openDBConnexion()
   $hostname = 'localhost';
   $port = 3306;
   $charset = 'utf8';
-  $dbName = 'superblinder';
-  $userName = 'tempTPI';
-  $userPwd = 'toor';
+  $dbName = 'tpi21blind_db';
+  $userName = 'tpi21blind_db';
+  $userPwd = 'ROOTtoor8$';
   $dsn = $sql.':host='.$hostname.';dbname='.$dbName.';port='.$port.';charset='.$charset;
 
   try
@@ -69,7 +69,7 @@ function openDBConnexion()
   }
   catch (PDOException $e)
   {
-    //echo("PDO error"); print_r($e); echo("<br>");
+    echo("PDO error"); print_r($e); echo("<br>");
   }
 
   return $dbConnection;
