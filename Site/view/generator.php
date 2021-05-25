@@ -80,7 +80,7 @@ $error = isset($_SESSION["filling"]["generationError"]) ? $_SESSION["filling"]["
     </div
 
     ><div style="width: 45%">
-      <form method="POST" action="?action=joinGame">
+      <form method="POST" action="?action=searchGame">
         <table>
           <col width="50%">
           <col width="50%">

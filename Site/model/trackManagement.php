@@ -1,21 +1,12 @@
 <?php
 
 class GameGenerationException extends Exception { }
+class GameSeedNotfoundException extends Exception { }
 
-function getTracks($gameType)
+function getTracks()
 {
-  $query = "SELECT id, title, fullPath, difficulty FROM tracks";
+  $query = "SELECT id, title, fullPath, difficulty, type FROM tracks";
   $data = array();
-
-  if($gameType == "movie")
-  {
-    $query.=" WHERE type = Movie";
-  }
-  else if($gameType == "serie")
-  {
-    $query.=" WHERE type = Serie";
-  }
-
 
   require_once("model/dbConnector.php");
   $result = executeQuerySelect($query, $data);
@@ -30,6 +21,27 @@ function getAllSeeds()
 
   require_once("model/dbConnector.php");
   $result = executeQuerySelect($query, $data);
+
+  return $result;
+}
+
+
+function getGameInfos($code)
+{
+  $query = "SELECT games.id AS gameId, games.seed, tracks.id AS trackId, tracks.title FROM games
+    INNER JOIN games_tracks ON games.id = games_tracks.gameId
+    INNER JOIN tracks ON games_tracks.trackId = tracks.id
+    WHERE games.seed = :code";
+
+  $data = array(":code" => $code);
+
+  require_once("model/dbConnector.php");
+  $result = executeQuerySelect($query, $data);
+
+  if(count($result) === 0)
+  {
+    throw new GameSeedNotfoundException();
+  }
 
   return $result;
 }
@@ -57,7 +69,7 @@ function insertGame($seed, $tracksIds)
     $data[] = array(":gameId" => $gameId, ":trackId" => $trackId);
   }
 
-  $result = executeQueryAction($query, $data, $repeat = true);
+  $result = executeQueryAction($query, $data, true);
 
   return $gameId;
 }

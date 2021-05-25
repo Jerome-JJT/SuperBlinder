@@ -16,6 +16,11 @@ if(isset($_GET["action"]) && $logged)
       require("controler/game.php");
       generateGame($_POST);
       break;
+
+    case "searchGame":
+      require("controler/game.php");
+      searchGame($_POST);
+      break;
   }
 }
 else if(isset($_GET["page"]) && $logged)

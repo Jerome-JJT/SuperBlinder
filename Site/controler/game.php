@@ -8,7 +8,7 @@ function generateGame($postData)
   && isset($postData["type"]))
   {
     require_once("model/trackManagement.php");
-    $tracks = getTracks($postData["type"]);
+    $tracks = getTracks();
 
     //Convert slider to allowed difficulties
     switch($postData["difficulty"])
@@ -35,9 +35,13 @@ function generateGame($postData)
       break;
     }
 
+    $gameType = $postData["type"];
+
     //Filter tracks with wrong difficulty
-    $usable = array_filter($tracks, function($track) use (&$auth) {
-      if(array_search($track["difficulty"], $auth) !== false)
+    $usable = array_filter($tracks, function($track) use ($auth, $gameType) {
+      if(array_search($track["difficulty"], $auth) !== false
+      && ($gameType == "all"
+        || $gameType == $track["type"]))
       {
         return true;
       }
@@ -93,7 +97,7 @@ function generateGame($postData)
       header("Location:/"); exit();
     }
 
-    joinGame($gameId, $gameCode, $tracks, $gameIds);
+    startGame($gameId, $gameCode, $tracks, $gameIds);
   }
   else
   {
@@ -103,12 +107,39 @@ function generateGame($postData)
 }
 
 
-function searchGame()
+function searchGame($postData)
 {
+  if(isset($postData["code"]))
+  {
+    require_once("model/trackManagement.php");
+    $tracks = getTracks();
 
+    $gameCode = substr($postData["code"], 0, 10);
+
+    try
+    {
+
+      $gameInfos = getGameInfos($gameCode);
+    }
+    catch(GameSeedNotfoundException $e)
+    {
+      $_SESSION["filling"] = array("generationError" => "Partie non trouvée");
+      header("Location:/"); exit();
+    }
+
+    $gameId = $gameInfos[0]["gameId"];
+    $gameTracks = array();
+
+    foreach($gameInfos as $track)
+    {
+      $gameTracks[] = $track["trackId"];
+    }
+
+    startGame($gameId, $gameCode, $tracks, $gameTracks);
+  }
 }
 
-function joinGame($gameId, $gameCode, $tracks, $gameTracks)
+function startGame($gameId, $gameCode, $tracks, $gameTracks)
 {
 
   $_SESSION["game"] = array("gameId" => $gameId, "gameCode" => $gameCode, "advancement" => 0, "list" => array());
