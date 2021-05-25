@@ -67,7 +67,7 @@ if(isset($_SESSION["filling"])) { unset($_SESSION["filling"]); }
         </div
 
         ><div>
-          <button class="btn btn-grey">Upload</button>
+          <button class="btn btn-grey" onclick="window.location='/?page=upload'">Upload</button>
         </div>
       <?php endif ?>
     </div>
@@ -81,47 +81,47 @@ if(isset($_SESSION["filling"])) { unset($_SESSION["filling"]); }
 
 <!-- Footer -->
 <footer>
-    <!--<footer style="background-image: linear-gradient(#888888, #555555)">-->
-    <div class="container">
-        <div class="row">
-          <div class="col-md-4">
-              <!--
-              <ul class="list-inline social-buttons">
-                  <li class="list-inline-item">
-                      <a href="#">
-                          <i class="fab fa-twitter"></i>
-                      </a>
-                  </li>
-                  <li class="list-inline-item">
-                      <a href="#">
-                          <i class="fab fa-facebook-f"></i>
-                      </a>
-                  </li>
-                  <li class="list-inline-item">
-                      <a href="#">
-                          <i class="fab fa-linkedin-in"></i>
-                      </a>
-                  </li>
-              </ul>
-            -->
-          </div>
-          <div class="col-md-4">
-              <span class="copyright">Copyright &copy; SuperBlinder 2021</span>
-          </div>
-          <!--
-          <div class="col-md-4">
-              <ul class="list-inline quicklinks">
-                  <li class="list-inline-item">
-                      <a href="#">Privacy Policy</a>
-                  </li>
-                  <li class="list-inline-item">
-                      <a href="#">Terms of Use</a>
-                  </li>
-              </ul>
-          </div>
-          -->
-        </div>
+  <!--<footer style="background-image: linear-gradient(#888888, #555555)">-->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <!--
+        <ul class="list-inline social-buttons">
+            <li class="list-inline-item">
+                <a href="#">
+                    <i class="fab fa-twitter"></i>
+                </a>
+            </li>
+            <li class="list-inline-item">
+                <a href="#">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+            </li>
+            <li class="list-inline-item">
+                <a href="#">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+            </li>
+        </ul>
+        -->
+      </div>
+      <div class="col-md-4">
+          <span class="copyright">Copyright &copy; SuperBlinder 2021</span>
+      </div>
+      <!--
+      <div class="col-md-4">
+        <ul class="list-inline quicklinks">
+          <li class="list-inline-item">
+            <a href="#">Privacy Policy</a>
+          </li>
+          <li class="list-inline-item">
+            <a href="#">Terms of Use</a>
+          </li>
+        </ul>
+      </div>
+      -->
     </div>
+  </div>
 </footer>
 
 <!--

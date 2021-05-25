@@ -8,7 +8,7 @@ $title = "SuperBlinder - Uploader";
 
 <div class="page-center" style="height: 600px">
   <div>
-    <form method="POST" action="?action=upload">
+    <form method="POST" action="?action=upload" enctype="multipart/form-data">
       <h3 style="text-align: center">Upload</h3>
 
       <table class="login-table" style="width: 60%; margin-left: 20%; min-width: 300px">
@@ -21,10 +21,10 @@ $title = "SuperBlinder - Uploader";
           <td>Difficulté</td>
 
           <td>
-            <select name="trackNb">
-              <option>Facile</option>
-              <option>Normal</option>
-              <option>Difficile</option>
+            <select name="difficulty" required>
+              <option value="easy">Facile</option>
+              <option value="normal">Normal</option>
+              <option value="hard">Difficile</option>
             </select>
           </td>
         </tr>
@@ -33,9 +33,9 @@ $title = "SuperBlinder - Uploader";
           <td>Type</td>
 
           <td>
-            <select name="trackNb">
-              <option>Film</option>
-              <option>Série</option>
+            <select name="type" required>
+              <option value="movie">Film</option>
+              <option value="serie">Série</option>
             </select>
           </td>
         </tr>
@@ -51,7 +51,7 @@ $title = "SuperBlinder - Uploader";
             <td>Vidéo</td>
 
             <td style="max-width: 50px; overflow: hidden">
-              <input type="file">
+              <input type="file" name="video">
             </td>
           </tr>
         </table>
@@ -69,7 +69,7 @@ $title = "SuperBlinder - Uploader";
             <td>Image</td>
 
             <td style="max-width: 50px; overflow: hidden">
-              <input type="file">
+              <input type="file" name="image">
             </td>
           </tr>
 
@@ -77,7 +77,7 @@ $title = "SuperBlinder - Uploader";
             <td>Son</td>
 
             <td style="max-width: 50px; overflow: hidden">
-              <input type="file">
+              <input type="file" name="audio">
             </td>
           </tr>
         </table>

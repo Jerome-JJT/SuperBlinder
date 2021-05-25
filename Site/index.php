@@ -21,6 +21,11 @@ if(isset($_GET["action"]) && $logged)
       require("controler/game.php");
       searchGame($_POST);
       break;
+
+    case "upload":
+      require("controler/uploading.php");
+      uploadTrack($_POST, $_FILES);
+      break;
   }
 }
 else if(isset($_GET["page"]) && $logged)
