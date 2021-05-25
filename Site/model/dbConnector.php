@@ -6,7 +6,7 @@ function executeQuerySelect($query, $data = array())
   $queryResult = array();
 
   //Open database connection
-  $pdo = openDBConnexion();
+  $pdo = openDBConnection();
 
   if ($pdo != null)
   {
@@ -24,7 +24,7 @@ function executeQuerySelect($query, $data = array())
 function executeQueryAction($query, $data = array(), $repeat = false)
 {
   //Open database connection
-  $pdo = openDBConnexion();
+  $pdo = openDBConnection();
   $result = true;
 
   if ($pdo != null)
@@ -50,7 +50,7 @@ function executeQueryAction($query, $data = array(), $repeat = false)
 }
 
 
-function openDBConnexion()
+function openDBConnection()
 {
   $dbConnection = null;
 

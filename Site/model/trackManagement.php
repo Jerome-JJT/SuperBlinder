@@ -4,7 +4,7 @@ class GameGenerationException extends Exception { }
 
 function getTracks($gameType)
 {
-  $query = "SELECT id, title, fullPath, difficulty FROM TRACKS";
+  $query = "SELECT id, title, fullPath, difficulty FROM tracks";
   $data = array();
 
   if($gameType == "movie")
@@ -25,7 +25,7 @@ function getTracks($gameType)
 
 function getAllSeeds()
 {
-  $query = "SELECT seed FROM GAMES";
+  $query = "SELECT seed FROM games";
   $data = array();
 
   require_once("model/dbConnector.php");
@@ -37,7 +37,7 @@ function getAllSeeds()
 
 function insertGame($seed, $tracksIds)
 {
-  $query = "INSERT INTO GAMES (seed) VALUES (:seed)";
+  $query = "INSERT INTO games (seed) VALUES (:seed)";
 
   $data = array(":seed" => $seed);
 
@@ -49,7 +49,7 @@ function insertGame($seed, $tracksIds)
   }
 
 
-  $query = "INSERT INTO GAMES_TRACKS (gameId, trackId) VALUES (:gameId, :trackId)";
+  $query = "INSERT INTO games_tracks (gameId, trackId) VALUES (:gameId, :trackId)";
   $data = array();
 
   foreach ($tracksIds as $trackId)
