@@ -2,11 +2,9 @@
 
 session_start();
 
-//print_r($_SESSION);
-
 $logged = isset($_SESSION["logInfo"]);
-
 require("controler/views.php");
+
 
 if(isset($_GET["action"]) && $logged)
 {
@@ -18,12 +16,12 @@ if(isset($_GET["action"]) && $logged)
       break;
 
     case "generateGame":
-      require("controler/game.php");
+      require("controler/gameGeneration.php");
       generateGame($_POST);
       break;
 
     case "searchGame":
-      require("controler/game.php");
+      require("controler/gameGeneration.php");
       searchGame($_POST);
       break;
 
@@ -37,33 +35,15 @@ else if(isset($_GET["page"]) && $logged)
 {
   switch($_GET["page"])
   {
-    case "gabarit":
-      //require("view/template.php");
-      break;
-
-    case "connection":
-      //require("view/connection.php");
-      //displayUpload();
-      break;
-
-    case "generate":
-      //require("view/generator.php");
-      //displayGenerator();
-      break;
 
     case "play":
-      require("view/play.php");
-      //displayUpload();
+      require("controler/gamePlay.php");
+      displayGame($_GET);
       break;
 
     case "upload":
-      //require("view/upload.php");
       displayUploader();
       break;
-
-    //default:
-      //displayGenerator();
-
   }
 }
 else if($logged)

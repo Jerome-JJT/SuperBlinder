@@ -175,7 +175,7 @@ function startGame($gameId, $gameCode, $tracks, $gameTracks)
 
   //print_r($_SESSION["game"]);
 
-  echo("Id game "); print_r($_SESSION["game"]["gameId"]); echo("<br>");
+  /*echo("Id game "); print_r($_SESSION["game"]["gameId"]); echo("<br>");
   echo("Game code "); print_r($_SESSION["game"]["gameCode"]); echo("<br>");
 
   foreach($_SESSION["game"]["list"] as $list)
@@ -190,8 +190,9 @@ function startGame($gameId, $gameCode, $tracks, $gameTracks)
       echo("Option text "); print_r($option); echo("<br>");
     }
     echo("<br>");echo("<br>");echo("<br>");
-  }
-  //header("Location:/?page=play");
+  }*/
+
+  header("Location:/?page=play");exit();
 }
 
 

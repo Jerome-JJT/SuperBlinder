@@ -27,13 +27,23 @@ $title = "SuperBlinder - Jeu";
       <h4 id="remaining-time" style="text-align: center"></h4>
 
       <div id="selection" style="margin-bottom: 30px; visibility: hidden">
-        <div><div>Star Wars</div></div
-        ><div><div>Narnia</div></div
-        ><div><div>Seigneur des anneaux</div></div>
-        <br>
-        <div><div>Avengers</div></div
-        ><div><div>Harry Potter</div></div
-        ><div><div>Jurassic Park</div></div>
+        <?php foreach($answerList[0] as $answer):
+          ?><div onclick="window.location=''"><div><?= $answer["value"] ?></div></div><?php
+          endforeach ?>
+          <br>
+        <?php foreach($answerList[1] as $answer):
+          ?><div><div><?= $answer["value"] ?></div></div><?php
+          endforeach ?>
+
+        <?php if(false): ?>
+          <div><div>Star Wars</div></div
+          ><div><div>Narnia</div></div
+          ><div><div>Seigneur des anneaux</div></div>
+          <br>
+          <div><div>Avengers</div></div
+          ><div><div>Harry Potter</div></div
+          ><div><div>Jurassic Park</div></div>
+        <?php endif ?>
       </div>
     </div>
   </div
@@ -44,15 +54,18 @@ $title = "SuperBlinder - Jeu";
     <div class="game-side">
       <div>
         <h4>Code de la partie</h4>
-        <p>sfhdgncncn</p>
-        <p>1 bonne réponse sur 2 - 50%</p>
+        <p><?= $gameCode ?></p>
+        <p> <?=$goodAnswers?> bonne(s) réponse(s) sur <?=$answered?> - <?= $answered > 0 ? round($goodAnswers/$answered*100) : 0 ?>%</p>
 
         <h4>Score</h4>
       </div
 
       ><div class="game-list">
-        <div style="background-color: lime;">Star wars</div>
-        <div style="background-color: red;">Seigneur des anneaux</div>
+        <?php foreach($history as $hist): ?>
+          <div style="background-color: <?= $hist['state'] == 1 ? 'lime' : 'red' ?>">
+            <?= $hist["text"] ?>
+          </div>
+        <?php endforeach ?>
       </div>
     </div>
   </div>
@@ -65,7 +78,7 @@ $title = "SuperBlinder - Jeu";
     document.getElementById("audio").play();
     document.getElementById("selection").style.visibility = "visible";
 
-    let timeout = 3;
+    let timeout = 99;
     document.getElementById("remaining-time").textContent = timeout+" secondes restantes";
 
     let timer = setInterval(function() {
