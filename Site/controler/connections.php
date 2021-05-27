@@ -83,3 +83,11 @@ function register($postData)
     header("Location:/"); exit();
   }
 }
+
+
+function logout()
+{
+  unset($_SESSION["logInfo"]);
+  $_SESSION["filling"] = array("success" => "Déconnexion réussie");
+  header("Location:/"); exit();
+}

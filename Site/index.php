@@ -12,6 +12,11 @@ if(isset($_GET["action"]) && $logged)
 {
   switch($_GET["action"])
   {
+    case "logout":
+      require("controler/connections.php");
+      logout();
+      break;
+
     case "generateGame":
       require("controler/game.php");
       generateGame($_POST);
@@ -52,8 +57,8 @@ else if(isset($_GET["page"]) && $logged)
       break;
 
     case "upload":
-      require("view/upload.php");
-      //displayUpload();
+      //require("view/upload.php");
+      displayUploader();
       break;
 
     //default:

@@ -67,7 +67,9 @@ if(isset($_SESSION["filling"])) { unset($_SESSION["filling"]); }
         </div
 
         ><div>
-          <button class="btn btn-grey" onclick="window.location='/?page=upload'">Upload</button>
+          <button style="max-height: 25px; padding-top: 0" class="btn btn-grey" onclick="window.location='/?page=upload'">Upload</button>
+          <br>
+          <button style="max-height: 25px; padding-top: 0" class="btn btn-grey" onclick="window.location='/?action=logout'">Déconnexion</button>
         </div>
       <?php endif ?>
     </div>
