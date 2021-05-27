@@ -14,6 +14,24 @@ function getTracks()
   return $result;
 }
 
+
+function insertTrack($title, $fullPath, $difficulty, $type, $creatorId)
+{
+  $query = "INSERT INTO tracks (title, fullpath, difficulty, type, creatorId)
+  VALUES (:title, :fullpath, :difficulty, :type, :creatorId)";
+
+  $data = array(":title" => $title, ":fullpath" => $fullPath,
+  ":difficulty" => $difficulty, ":type" => $type, ":creatorId" => $creatorId);
+
+  print_r($query);
+  print_r($data);
+
+  require_once("model/dbConnector.php");
+  $result = executeQueryAction($query, $data);
+
+  return $result;
+}
+
 function getAllSeeds()
 {
   $query = "SELECT seed FROM games";

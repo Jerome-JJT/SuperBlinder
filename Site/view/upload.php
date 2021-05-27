@@ -4,9 +4,19 @@ ob_start();
 
 $title = "SuperBlinder - Uploader";
 
+$success = isset($_SESSION["filling"]["success"]) ? $_SESSION["filling"]["success"] : "";
+$error = isset($_SESSION["filling"]["uploadError"]) ? $_SESSION["filling"]["uploadError"] : "";
+
 ?>
 
 <div class="page-center" style="height: 600px">
+  <p style="text-align:center; color: red">
+    <?=$error?>
+  </p>
+  <p style="text-align:center; color: green">
+    <?=$success?>
+  </p>
+
   <div>
     <form method="POST" action="?action=upload" enctype="multipart/form-data">
       <h3 style="text-align: center">Upload</h3>
@@ -22,9 +32,9 @@ $title = "SuperBlinder - Uploader";
 
           <td>
             <select name="difficulty" required>
-              <option value="easy">Facile</option>
-              <option value="normal">Normal</option>
-              <option value="hard">Difficile</option>
+              <option value="Easy">Facile</option>
+              <option value="Normal">Normal</option>
+              <option value="Hard">Difficile</option>
             </select>
           </td>
         </tr>
@@ -34,8 +44,8 @@ $title = "SuperBlinder - Uploader";
 
           <td>
             <select name="type" required>
-              <option value="movie">Film</option>
-              <option value="serie">Série</option>
+              <option value="Movie">Film</option>
+              <option value="Serie">Série</option>
             </select>
           </td>
         </tr>
