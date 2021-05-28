@@ -6,7 +6,10 @@ class EmailDoesntExistException extends Exception { }
 
 function getUserInfos($userEmail)
 {
-  $query = "SELECT id, email, username, creationDate FROM users WHERE email = :email";
+  $query = "SELECT users.id, email, username, creationDate, ROUND(AVG(scores.score),0)
+  AS score FROM users INNER JOIN scores ON users.id = scores.userId
+  WHERE email = :email";
+
   $data = array(":email" => $userEmail);
 
   require_once("model/dbConnector.php");
@@ -22,7 +25,8 @@ function getUserInfos($userEmail)
     "id" => $result["id"],
     "email" => $result["email"],
     "username" => $result["username"],
-    "creationDate" => $result["creationDate"]
+    "creationDate" => $result["creationDate"],
+    "score" => $result["score"]
   );
 }
 
@@ -45,6 +49,28 @@ function loginUser($userEmail, $userPassword)
   return $success;
 }
 
+function addScore($gameId, $userId, $score)
+{
+  $query = "SELECT COUNT(id) AS count FROM scores WHERE gameId = :gameId AND userId = :userId";
+  $data = array(":gameId" => $gameId, ":userId" => $userId);
+
+  require_once("model/dbConnector.php");
+  $scoreExist = executeQuerySelect($query, $data)[0];
+
+  if($scoreExist["count"] > 0)
+  {
+    return false;
+  }
+
+  $query = "INSERT INTO scores (gameId, userId, score)
+  VALUES (:gameId, :userId, :score)";
+
+  $data = array(":gameId" => $gameId, ":userId" => $userId, ":score" => $score);
+
+  $success = executeQueryAction($query, $data);
+
+  return $success;
+}
 
 
 function createUser($userEmail, $userName, $userPassword)

@@ -69,7 +69,7 @@ function openDBConnection()
   }
   catch (PDOException $e)
   {
-    echo("PDO error"); print_r($e); echo("<br>");
+    //echo("PDO error"); print_r($e); echo("<br>");
   }
 
   return $dbConnection;

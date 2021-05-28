@@ -63,11 +63,11 @@ if(isset($_SESSION["filling"])) { unset($_SESSION["filling"]); }
 
         ><div style="font-size: 14px">
           <?=$creationDate?><br>
-          TODOTODO de bonnes réponses
+          <?=$_SESSION["logInfo"]["score"]?> % de bonnes réponses
         </div
 
         ><div>
-          <button style="max-height: 25px; padding-top: 0" class="btn btn-grey" onclick="window.location='/?page=upload'">Upload</button>
+          <button style="max-height: 25px; padding-top: 0; margin-bottom: 5px;" class="btn btn-grey" onclick="window.location='/?page=upload'">Upload</button>
           <br>
           <button style="max-height: 25px; padding-top: 0" class="btn btn-grey" onclick="window.location='/?action=logout'">Déconnexion</button>
         </div>
