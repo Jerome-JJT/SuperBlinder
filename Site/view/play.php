@@ -3,6 +3,7 @@
 ob_start();
 
 $title = "SuperBlinder - Jeu";
+$tracksDir = "/tracks/";
 
 ?>
 
@@ -17,10 +18,10 @@ $title = "SuperBlinder - Jeu";
 
       <div class="video-container">
         <video id="audio" style="width: 0">
-         <source src="/view/content/vids/audio.mp4" type="video/mp4">
+         <source src="<?=$tracksDir.$gameUrl?>" type="video/mp4">
         </video>
         <video id="video" style="visibility: hidden; width: 100%; max-height: 400px" muted>
-         <source src="/view/content/vids/audio.mp4" type="video/mp4">
+         <source src="<?=$tracksDir.$gameUrl?>" type="video/mp4">
         </video>
       </div>
 
@@ -28,22 +29,12 @@ $title = "SuperBlinder - Jeu";
 
       <div id="selection" style="margin-bottom: 30px; visibility: hidden">
         <?php foreach($answerList[0] as $answer):
-          ?><div onclick="window.location=''"><div><?= $answer["value"] ?></div></div><?php
+          ?><div onclick="window.location='/?page=play&answer=<?=$answer["key"]?>'"><div><?=$answer["value"]?></div></div><?php
           endforeach ?>
           <br>
         <?php foreach($answerList[1] as $answer):
-          ?><div><div><?= $answer["value"] ?></div></div><?php
+          ?><div onclick="window.location='/?page=play&answer=<?=$answer["key"]?>'"><div><?= $answer["value"] ?></div></div><?php
           endforeach ?>
-
-        <?php if(false): ?>
-          <div><div>Star Wars</div></div
-          ><div><div>Narnia</div></div
-          ><div><div>Seigneur des anneaux</div></div>
-          <br>
-          <div><div>Avengers</div></div
-          ><div><div>Harry Potter</div></div
-          ><div><div>Jurassic Park</div></div>
-        <?php endif ?>
       </div>
     </div>
   </div
@@ -55,7 +46,7 @@ $title = "SuperBlinder - Jeu";
       <div>
         <h4>Code de la partie</h4>
         <p><?= $gameCode ?></p>
-        <p> <?=$goodAnswers?> bonne(s) réponse(s) sur <?=$answered?> - <?= $answered > 0 ? round($goodAnswers/$answered*100) : 0 ?>%</p>
+        <p><?=$goodAnswers?> bonne(s) réponse(s) sur <?= $answered ?> - <?=$scoreRatio?>%</p>
 
         <h4>Score</h4>
       </div
@@ -78,7 +69,7 @@ $title = "SuperBlinder - Jeu";
     document.getElementById("audio").play();
     document.getElementById("selection").style.visibility = "visible";
 
-    let timeout = 99;
+    let timeout = 10;
     document.getElementById("remaining-time").textContent = timeout+" secondes restantes";
 
     let timer = setInterval(function() {
@@ -97,8 +88,10 @@ $title = "SuperBlinder - Jeu";
         document.getElementById("selection").style.visibility = "hidden";
         document.getElementById("video").style.visibility = "visible";
         document.getElementById("video").play();
-        clearInterval(timer);
-        return;
+      }
+
+      if(timeout < -5){
+        window.location = "/?page=play&answer=-1";
       }
     }, 1000);
   }

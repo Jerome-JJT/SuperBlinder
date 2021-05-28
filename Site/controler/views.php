@@ -15,8 +15,3 @@ function displayUploader()
 {
   require("view/upload.php");
 }
-
-function displayEndgame()
-{
-
-}
