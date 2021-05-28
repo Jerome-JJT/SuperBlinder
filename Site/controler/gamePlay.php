@@ -20,25 +20,15 @@ function displayGame($getData)
       $_SESSION["game"]["list"][$current]["state"] = 1;
     }
 
-
     $_SESSION["game"]["advancement"]++;
 
     header("Location:/?page=play"); exit();
   }
 
-  print_r($_SESSION["game"]);
 
   $gameUrl = $_SESSION["game"]["list"][$current]["path"];
   $gameCode = $_SESSION["game"]["gameCode"];
 
-  $answerList = array();
-
-  foreach($_SESSION["game"]["list"][$current]["options"] as $key => $value)
-  {
-    $answerList[] = array("key" => $key, "value" => $value);
-  }
-  shuffle($answerList);
-  $answerList = array_chunk($answerList, 3);
 
   $history = array();
   $goodAnswers = 0;
@@ -57,12 +47,27 @@ function displayGame($getData)
 
   $scoreRatio = $answered != 0 ? round($goodAnswers/$answered*100) : 0;
 
-  if(1 == 1 || $_SESSION["game"]["advancement"] >= count($_SESSION["game"]["list"]))
+  //If game isn't finished
+  if($_SESSION["game"]["advancement"] < count($_SESSION["game"]["list"]))
+  {
+    $answerList = array();
+    foreach($_SESSION["game"]["list"][$current]["options"] as $key => $value)
+    {
+      $answerList[] = array("key" => $key, "value" => $value);
+    }
+    shuffle($answerList);
+    $answerList = array_chunk($answerList, 3);
+
+  }
+  else
   {
     $notGame = true;
 
     require_once("model/userManagement.php");
     addScore($_SESSION["game"]["gameId"], $_SESSION["logInfo"]["id"], $scoreRatio);
+    $_SESSION["logInfo"] = getUserInfos($_SESSION["logInfo"]["email"]);
+
+    unset($_SESSION["game"]);
 
     require("view/endgame.php");
     exit();

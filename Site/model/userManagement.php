@@ -6,8 +6,8 @@ class EmailDoesntExistException extends Exception { }
 
 function getUserInfos($userEmail)
 {
-  $query = "SELECT users.id, email, username, creationDate, ROUND(AVG(scores.score),0)
-  AS score FROM users INNER JOIN scores ON users.id = scores.userId
+  $query = "SELECT users.ID AS userId, users.email, users.username, users.creationDate, COALESCE(ROUND(AVG(scores.score),0),0) AS score
+  FROM users LEFT JOIN scores ON users.ID = scores.userId
   WHERE email = :email";
 
   $data = array(":email" => $userEmail);
@@ -22,13 +22,14 @@ function getUserInfos($userEmail)
   $result = $result[0];
 
   return array(
-    "id" => $result["id"],
+    "id" => $result["userId"],
     "email" => $result["email"],
     "username" => $result["username"],
     "creationDate" => $result["creationDate"],
     "score" => $result["score"]
   );
 }
+
 
 function loginUser($userEmail, $userPassword)
 {
@@ -51,7 +52,7 @@ function loginUser($userEmail, $userPassword)
 
 function addScore($gameId, $userId, $score)
 {
-  $query = "SELECT COUNT(id) AS count FROM scores WHERE gameId = :gameId AND userId = :userId";
+  $query = "SELECT COUNT(ID) AS count FROM scores WHERE gameId = :gameId AND userId = :userId";
   $data = array(":gameId" => $gameId, ":userId" => $userId);
 
   require_once("model/dbConnector.php");
