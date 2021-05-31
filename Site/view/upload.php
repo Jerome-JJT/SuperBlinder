@@ -49,10 +49,18 @@ $error = isset($_SESSION["filling"]["uploadError"]) ? $_SESSION["filling"]["uplo
             </select>
           </td>
         </tr>
+
+        <tr>
+          <td>Vidéo</td>
+
+          <td>
+            <input type="file" name="video">
+          </td>
+        </tr>
       </table>
     </div>
 
-    <div style="height: 200px">
+    <!--<div style="height: 200px">
       <div style="display: inline-block; vertical-align: top; width: 49.5%">
         <h3 style="text-align: center">Vidéo</h3>
 
@@ -91,7 +99,7 @@ $error = isset($_SESSION["filling"]["uploadError"]) ? $_SESSION["filling"]["uplo
             </td>
           </tr>
         </table>
-      </div>
+      </div>-->
 
 
       <div>
