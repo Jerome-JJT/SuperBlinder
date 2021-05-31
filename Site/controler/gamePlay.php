@@ -1,6 +1,5 @@
 <?php
 
-
 function displayGame($getData)
 {
   if(!isset($_SESSION["game"]))
@@ -25,10 +24,7 @@ function displayGame($getData)
     header("Location:/?page=play"); exit();
   }
 
-
-  $gameUrl = $_SESSION["game"]["list"][$current]["path"];
   $gameCode = $_SESSION["game"]["gameCode"];
-
 
   $history = array();
   $goodAnswers = 0;
@@ -50,6 +46,8 @@ function displayGame($getData)
   //If game isn't finished
   if($_SESSION["game"]["advancement"] < count($_SESSION["game"]["list"]))
   {
+    $gameUrl = $_SESSION["game"]["list"][$current]["path"];
+
     $answerList = array();
     foreach($_SESSION["game"]["list"][$current]["options"] as $key => $value)
     {

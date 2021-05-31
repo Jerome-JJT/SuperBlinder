@@ -14,34 +14,33 @@ function generateGame($postData)
     switch($postData["difficulty"])
     {
       case 1:
-      $auth = array("Easy");
+      $diff = array("Easy");
       break;
 
       case 2:
-      $auth = array("Easy", "Normal");
+      $diff = array("Easy", "Normal");
       break;
 
       default:
       case 3:
-      $auth = array("Normal");
+      $diff = array("Normal");
       break;
 
       case 4:
-      $auth = array("Normal", "Hard");
+      $diff = array("Normal", "Hard");
       break;
 
       case 5:
-      $auth = array("Hard");
+      $diff = array("Hard");
       break;
     }
 
     $gameType = $postData["type"];
 
     //Filter tracks with wrong difficulty
-    $usable = array_filter($tracks, function($track) use ($auth, $gameType) {
-      if(array_search($track["difficulty"], $auth) !== false
-      && ($gameType == "all"
-        || $gameType == $track["type"]))
+    $usable = array_filter($tracks, function($track) use ($diff, $gameType) {
+      if(array_search($track["difficulty"], $diff) !== false
+      && ($gameType == "all" || $gameType == $track["type"]))
       {
         return true;
       }
@@ -141,7 +140,6 @@ function searchGame($postData)
 
 function startGame($gameId, $gameCode, $tracks, $gameTracks)
 {
-
   $_SESSION["game"] = array("gameId" => $gameId, "gameCode" => $gameCode, "advancement" => 0, "list" => array());
 
   foreach($gameTracks as $trackId)
@@ -154,16 +152,15 @@ function startGame($gameId, $gameCode, $tracks, $gameTracks)
     {
       $rand = rand(0, count($tracks)-1);
 
-      if(isset($localOptions[$rand]))
+      $randId = $tracks[$rand]["id"];
+      if(isset($localOptions[$randId]))
       {
         $i--;
         continue;
       }
 
-      $localOptions[$rand] = $tracks[$rand]["title"];
+      $localOptions[$randId] = $tracks[$rand]["title"];
     }
-
-    //print_r($tracks);
 
     $_SESSION["game"]["list"][] = array(
       "state" => 0,

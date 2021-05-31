@@ -14,7 +14,8 @@ function login($postData)
     }
     catch(EmailDoesntExistException $e)
     {
-      $_SESSION["filling"] = array("connectionError" => "Utilisateur n'existe pas", "email" => $postData["email"]);
+      //$_SESSION["filling"] = array("connectionError" => "Utilisateur n'existe pas", "email" => $postData["email"]);
+      $_SESSION["filling"] = array("connectionError" => "Erreur", "email" => $postData["email"]);
       header("Location:/"); exit();
     }
 
@@ -25,7 +26,8 @@ function login($postData)
     }
     else
     {
-      $_SESSION["filling"] = array("connectionError" => "Mot de passe faux", "email" => $postData["email"]);
+      //$_SESSION["filling"] = array("connectionError" => "Mot de passe faux", "email" => $postData["email"]);
+      $_SESSION["filling"] = array("connectionError" => "Erreur", "email" => $postData["email"]);
       header("Location:/"); exit();
     }
   }
@@ -57,6 +59,7 @@ function register($postData)
         $_SESSION["filling"] = array("connectionError" => "Utilisateur existe déjà",
         "email" => $postData["email"],
         "username" => $postData["username"]);
+
         header("Location:/"); exit();
       }
 

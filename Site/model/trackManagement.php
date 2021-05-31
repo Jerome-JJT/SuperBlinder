@@ -23,9 +23,6 @@ function insertTrack($title, $fullPath, $difficulty, $type, $creatorId)
   $data = array(":title" => $title, ":fullpath" => $fullPath,
   ":difficulty" => $difficulty, ":type" => $type, ":creatorId" => $creatorId);
 
-  print_r($query);
-  print_r($data);
-
   require_once("model/dbConnector.php");
   $result = executeQueryAction($query, $data);
 

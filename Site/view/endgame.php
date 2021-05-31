@@ -15,6 +15,8 @@ $tracksDir = "/tracks/";
     <div class="game-side" style="text-align: center">
       <h2>Fin de partie</h2>
 
+      <button style="text-align: center; max-width: 160px; margin: auto;" class="btn btn-grey" onclick="window.location='/'">Retour au site</button><br>
+      <br>
       <div>
         <h4>Code de la partie</h4>
         <p><?= $gameCode ?></p>

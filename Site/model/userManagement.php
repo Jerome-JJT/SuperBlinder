@@ -82,11 +82,10 @@ function createUser($userEmail, $userName, $userPassword)
   require_once("model/dbConnector.php");
   $emailExist = executeQuerySelect($query, $data);
 
-  if($emailExist["count"] > 0)
+  if($emailExist[0]["count"] > 0)
   {
     throw new EmailAlreadyExistException();
   }
-
 
   $hashedPassword = password_hash($userPassword, PASSWORD_BCRYPT);
   $creationDate = date("Y-m-d");

@@ -15,7 +15,9 @@ $tracksDir = "/tracks/";
 
   ><div style="width: 50%; height: 100%;">
     <div class="game-container">
-
+      <p id="indic-text" style="text-align: center">
+        Cliquez démarrer la vidéo
+      </p>
       <div class="video-container">
         <video id="audio" style="width: 0">
          <source src="<?=$tracksDir.$gameUrl?>" type="video/mp4">
@@ -65,6 +67,8 @@ $tracksDir = "/tracks/";
 <script>
   document.getElementsByTagName("body")[0].onclick = function()
   {
+    document.getElementById("indic-text").style.display = "none";
+
     document.getElementsByTagName("body")[0].onclick = "";
     document.getElementById("audio").play();
     document.getElementById("selection").style.visibility = "visible";

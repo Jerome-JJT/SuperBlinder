@@ -50,8 +50,8 @@ $error = isset($_SESSION["filling"]["generationError"]) ? $_SESSION["filling"]["
             <td>
               <select id="type" name="type">
                 <option value="all">Tous</option>
-                <option value="movie">Films</option>
-                <option value="serie">Séries</option>
+                <option value="Movie">Films</option>
+                <option value="Serie">Séries</option>
               </select>
             </td>
           </tr>
