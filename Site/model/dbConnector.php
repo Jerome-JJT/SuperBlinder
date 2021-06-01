@@ -1,6 +1,16 @@
 <?php
+/**
+ * Author   : Jerome Jaquemet
+ * Email : jerome.jaquemet@cpnv.ch
+ * Project  : SuperBlinder
+ * Last modified  : 2021-06-01
+ *
+ * Github  : [https://github.com/Jerome-JJT/SuperBlinder]
+ *
+ */
 
 
+//Database select function, return with indexed column name and not numeral
 function executeQuerySelect($query, $data = array())
 {
   $queryResult = array();
@@ -21,6 +31,8 @@ function executeQuerySelect($query, $data = array())
 }
 
 
+//Database insert function, allow sending multiple data with same query with repeat option
+//For single query, return inserted id and false for query error
 function executeQueryAction($query, $data = array(), $repeat = false)
 {
   //Open database connection
@@ -30,6 +42,8 @@ function executeQueryAction($query, $data = array(), $repeat = false)
   if ($pdo != null)
   {
     $stm = $pdo->prepare($query);
+
+    //Single query option
     if(!$repeat)
     {
       $stm->execute($data);
@@ -37,6 +51,7 @@ function executeQueryAction($query, $data = array(), $repeat = false)
     }
     else
     {
+      //Multiple query option
       foreach ($data as $value)
       {
         $result &= $stm->execute($value);
@@ -50,6 +65,7 @@ function executeQueryAction($query, $data = array(), $repeat = false)
 }
 
 
+//Database connection management
 function openDBConnection()
 {
   $dbConnection = null;

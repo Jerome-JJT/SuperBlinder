@@ -1,9 +1,18 @@
 <?php
+/**
+ * Author   : Jerome Jaquemet
+ * Email : jerome.jaquemet@cpnv.ch
+ * Project  : SuperBlinder
+ * Last modified  : 2021-06-01
+ *
+ * Github  : [https://github.com/Jerome-JJT/SuperBlinder]
+ *
+ */
+
 
 ob_start();
 
 $title = "SuperBlinder - Jeu";
-$tracksDir = "/tracks/";
 
 ?>
 
@@ -35,43 +44,6 @@ $tracksDir = "/tracks/";
     </div>
   </div>
 </div>
-
-<?php if(!isset($notGame)): ?>
-  <script>
-    document.getElementsByTagName("body")[0].onclick = function()
-    {
-      document.getElementsByTagName("body")[0].onclick = "";
-      document.getElementById("audio").play();
-      document.getElementById("selection").style.visibility = "visible";
-
-      let timeout = 10;
-      document.getElementById("remaining-time").textContent = timeout+" secondes restantes";
-
-      let timer = setInterval(function() {
-        timeout-=1;
-
-        if(timeout > 1){
-          document.getElementById("remaining-time").textContent = timeout+" secondes restantes";
-        }
-        else if(timeout >= 0)
-        {
-          document.getElementById("remaining-time").textContent = timeout+" seconde restante";
-        }
-
-        if(timeout == -1){
-          document.getElementById("remaining-time").textContent = "Fin";
-          document.getElementById("selection").style.visibility = "hidden";
-          document.getElementById("video").style.visibility = "visible";
-          document.getElementById("video").play();
-        }
-
-        if(timeout < -5){
-          window.location = "/?page=play&answer=-1";
-        }
-      }, 1000);
-    }
-  </script>
-<?php endif ?>
 
 
 <?php

@@ -1,8 +1,21 @@
 <?php
+/**
+ * Author   : Jerome Jaquemet
+ * Email : jerome.jaquemet@cpnv.ch
+ * Project  : SuperBlinder
+ * Last modified  : 2021-06-01
+ *
+ * Github  : [https://github.com/Jerome-JJT/SuperBlinder]
+ *
+ */
 
+
+//Functions exceptions
 class GameGenerationException extends Exception { }
 class GameSeedNotfoundException extends Exception { }
 
+
+//Return list of all tracks
 function getTracks()
 {
   $query = "SELECT id, title, fullPath, difficulty, type FROM tracks";
@@ -15,6 +28,7 @@ function getTracks()
 }
 
 
+//Add a new tracks to the database
 function insertTrack($title, $fullPath, $difficulty, $type, $creatorId)
 {
   $query = "INSERT INTO tracks (title, fullpath, difficulty, type, creatorId)
@@ -29,6 +43,8 @@ function insertTrack($title, $fullPath, $difficulty, $type, $creatorId)
   return $result;
 }
 
+
+//Get all existing games seeds
 function getAllSeeds()
 {
   $query = "SELECT seed FROM games";
@@ -41,6 +57,7 @@ function getAllSeeds()
 }
 
 
+//Get game tracks and informations for given seed
 function getGameInfos($code)
 {
   $query = "SELECT games.id AS gameId, games.seed, tracks.id AS trackId, tracks.title FROM games
@@ -62,6 +79,7 @@ function getGameInfos($code)
 }
 
 
+//Add a new game into the database and add all linked tracks
 function insertGame($seed, $tracksIds)
 {
   $query = "INSERT INTO games (seed) VALUES (:seed)";
@@ -70,6 +88,7 @@ function insertGame($seed, $tracksIds)
 
   $gameId = executeQueryAction($query, $data);
 
+  //if return id is an error
   if($gameId == false)
   {
     throw new GameGenerationException();
@@ -79,6 +98,7 @@ function insertGame($seed, $tracksIds)
   $query = "INSERT INTO games_tracks (gameId, trackId) VALUES (:gameId, :trackId)";
   $data = array();
 
+  //Prepare tracks for a multiple query
   foreach ($tracksIds as $trackId)
   {
     $data[] = array(":gameId" => $gameId, ":trackId" => $trackId);

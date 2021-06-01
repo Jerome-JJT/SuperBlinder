@@ -1,12 +1,24 @@
 <?php
+/**
+ * Author   : Jerome Jaquemet
+ * Email : jerome.jaquemet@cpnv.ch
+ * Project  : SuperBlinder
+ * Last modified  : 2021-06-01
+ *
+ * Github  : [https://github.com/Jerome-JJT/SuperBlinder]
+ *
+ */
 
 
 function login($postData)
 {
+  //Verify user form inputs
   if(isset($postData["email"])
   && isset($postData["password"]))
   {
     $result = false;
+
+    //Login request
     try
     {
       require_once("model/userManagement.php");
@@ -19,6 +31,7 @@ function login($postData)
       header("Location:/"); exit();
     }
 
+    //If login is successful
     if($result != false)
     {
       $_SESSION["logInfo"] = getUserInfos($postData["email"]);
@@ -42,6 +55,7 @@ function login($postData)
 
 function register($postData)
 {
+  //Verify user form input
   if(isset($postData["email"])
   && isset($postData["username"])
   && isset($postData["password"])
@@ -49,6 +63,7 @@ function register($postData)
   {
     if($postData["password"] == $postData["repeatPassword"])
     {
+      //Register request
       try
       {
         require_once("model/userManagement.php");
@@ -63,6 +78,7 @@ function register($postData)
         header("Location:/"); exit();
       }
 
+      //If register is successful
       if($result != false)
       {
         $_SESSION["filling"] = array("success" => "Compte créé", "email" => $postData["email"]);
@@ -90,7 +106,9 @@ function register($postData)
 
 function logout()
 {
+  //Clear login session
   unset($_SESSION["logInfo"]);
+  
   $_SESSION["filling"] = array("success" => "Déconnexion réussie");
   header("Location:/"); exit();
 }

@@ -1,10 +1,20 @@
 <?php
+/**
+ * Author   : Jerome Jaquemet
+ * Email : jerome.jaquemet@cpnv.ch
+ * Project  : SuperBlinder
+ * Last modified  : 2021-06-01
+ *
+ * Github  : [https://github.com/Jerome-JJT/SuperBlinder]
+ *
+ */
+
 
 ob_start();
 
 $title = "SuperBlinder - Générateur";
 
-
+//Prefilled text
 $error = isset($_SESSION["filling"]["generationError"]) ? $_SESSION["filling"]["generationError"] : "";
 
 ?>
@@ -115,6 +125,7 @@ $error = isset($_SESSION["filling"]["generationError"]) ? $_SESSION["filling"]["
 
 
 <script>
+  //Display corresponding difficulty on difficulty slider
   function updateText()
   {
     let text = document.getElementById("difficulty-text");
@@ -147,7 +158,6 @@ $error = isset($_SESSION["filling"]["generationError"]) ? $_SESSION["filling"]["
   }
 
 </script>
-
 
 
 <?php

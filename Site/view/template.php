@@ -1,5 +1,16 @@
 <?php
+/**
+ * Author   : Jerome Jaquemet
+ * Email : jerome.jaquemet@cpnv.ch
+ * Project  : SuperBlinder
+ * Last modified  : 2021-06-01
+ *
+ * Github  : [https://github.com/Jerome-JJT/SuperBlinder]
+ *
+ */
 
+
+//If user has a session, prepare display format
 if(isset($_SESSION["logInfo"]))
 {
   $monthFr = array(0, "Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
@@ -15,6 +26,7 @@ if(isset($_SESSION["logInfo"]))
   $creationDate = "Créé le ".$day." ".$month." ".$year;
 }
 
+//Always clear prefilled texts, is sets
 if(isset($_SESSION["filling"])) { unset($_SESSION["filling"]); }
 
 ?>
@@ -22,7 +34,6 @@ if(isset($_SESSION["filling"])) { unset($_SESSION["filling"]); }
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-
     <meta charset="utf-8">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -81,53 +92,15 @@ if(isset($_SESSION["filling"])) { unset($_SESSION["filling"]); }
 </body>
 
 
-<!-- Footer -->
 <footer>
-  <!--<footer style="background-image: linear-gradient(#888888, #555555)">-->
   <div class="container">
     <div class="row">
       <div class="col-md-4">
-        <!--
-        <ul class="list-inline social-buttons">
-            <li class="list-inline-item">
-                <a href="#">
-                    <i class="fab fa-twitter"></i>
-                </a>
-            </li>
-            <li class="list-inline-item">
-                <a href="#">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-            </li>
-            <li class="list-inline-item">
-                <a href="#">
-                    <i class="fab fa-linkedin-in"></i>
-                </a>
-            </li>
-        </ul>
-        -->
       </div>
       <div class="col-md-4">
           <span class="copyright">Copyright &copy; SuperBlinder 2021</span>
       </div>
-      <!--
-      <div class="col-md-4">
-        <ul class="list-inline quicklinks">
-          <li class="list-inline-item">
-            <a href="#">Privacy Policy</a>
-          </li>
-          <li class="list-inline-item">
-            <a href="#">Terms of Use</a>
-          </li>
-        </ul>
-      </div>
-      -->
     </div>
   </div>
 </footer>
-
-<!--
-<script src="view/content/js/jquery.min.js"></script>
-<script src="view/content/js/bootstrap.bundle.min.js"></script>
--->
 </html>

@@ -1,8 +1,19 @@
 <?php
+/**
+ * Author   : Jerome Jaquemet
+ * Email : jerome.jaquemet@cpnv.ch
+ * Project  : SuperBlinder
+ * Last modified  : 2021-06-01
+ *
+ * Github  : [https://github.com/Jerome-JJT/SuperBlinder]
+ *
+ */
 
 
+//Used to create a new game with a seed and tracks
 function generateGame($postData)
 {
+  //Verify user form input
   if(isset($postData["difficulty"])
   && isset($postData["trackNb"])
   && isset($postData["type"]))
@@ -65,6 +76,7 @@ function generateGame($postData)
       {
           $xx = rand(0, 1000);
 
+          //Alternate between vowels and consonants
           if($type == 0)
           {
               $gameCode .= ($consonants[$xx % count($consonants)]);
@@ -76,12 +88,13 @@ function generateGame($postData)
               $type = 0;
           }
       }
+      //Verify if code doesnt already exists
     } while (in_array($gameCode, $seeds));
 
 
     try
     {
-      //Store game
+      //Store game and tracks, get game id in return
       $gameId = insertGame($gameCode, $gameIds);
 
       if($gameId == false)
@@ -106,18 +119,21 @@ function generateGame($postData)
 }
 
 
+//Require an already existing game's tracks
 function searchGame($postData)
 {
+  //Verify user form input
   if(isset($postData["code"]))
   {
     require_once("model/trackManagement.php");
     $tracks = getTracks();
 
+    //Get game's code, limited to 10 chars
     $gameCode = substr($postData["code"], 0, 10);
 
+    //Get game's tracks request
     try
     {
-
       $gameInfos = getGameInfos($gameCode);
     }
     catch(GameSeedNotfoundException $e)
@@ -126,9 +142,10 @@ function searchGame($postData)
       header("Location:/"); exit();
     }
 
+    //Get game's infos out of the request
     $gameId = $gameInfos[0]["gameId"];
-    $gameTracks = array();
 
+    $gameTracks = array();
     foreach($gameInfos as $track)
     {
       $gameTracks[] = $track["trackId"];
@@ -138,21 +155,30 @@ function searchGame($postData)
   }
 }
 
+
+//Store game into session, create wrong options list
 function startGame($gameId, $gameCode, $tracks, $gameTracks)
 {
+  //Store game's important informations
   $_SESSION["game"] = array("gameId" => $gameId, "gameCode" => $gameCode, "advancement" => 0, "list" => array());
 
   foreach($gameTracks as $trackId)
   {
+    //Get tracks from requested tracks list and not the database id
     $localTrackId = array_search($trackId, array_column($tracks, 'id'));
 
+    //Store track options, initialized with good answer
     $localOptions = array($trackId => $tracks[$localTrackId]["title"]);
 
+    //Adds 5 additionnal wrong answers
     for($i = 0; $i < 5; $i++)
     {
       $rand = rand(0, count($tracks)-1);
 
+      //Get database id of random tracks
       $randId = $tracks[$rand]["id"];
+
+      //If option is already in answers list, search a new one
       if(isset($localOptions[$randId]))
       {
         $i--;
@@ -162,6 +188,7 @@ function startGame($gameId, $gameCode, $tracks, $gameTracks)
       $localOptions[$randId] = $tracks[$rand]["title"];
     }
 
+    //Add current tracks and tracks options to the list
     $_SESSION["game"]["list"][] = array(
       "state" => 0,
       "answerId" => $trackId,
@@ -170,42 +197,5 @@ function startGame($gameId, $gameCode, $tracks, $gameTracks)
 
   }
 
-  //print_r($_SESSION["game"]);
-
-  /*echo("Id game "); print_r($_SESSION["game"]["gameId"]); echo("<br>");
-  echo("Game code "); print_r($_SESSION["game"]["gameCode"]); echo("<br>");
-
-  foreach($_SESSION["game"]["list"] as $list)
-  {
-    echo("Answer "); print_r($list["answerId"]); echo("<br>");
-    echo("Path "); print_r($list["path"]); echo("<br>");echo("<br>");
-
-
-    foreach($list["options"] as $key => $option)
-    {
-      echo("Option id "); print_r($key); echo("<br>");
-      echo("Option text "); print_r($option); echo("<br>");
-    }
-    echo("<br>");echo("<br>");echo("<br>");
-  }*/
-
   header("Location:/?page=play");exit();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//.

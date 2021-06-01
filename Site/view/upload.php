@@ -1,9 +1,20 @@
 <?php
+/**
+ * Author   : Jerome Jaquemet
+ * Email : jerome.jaquemet@cpnv.ch
+ * Project  : SuperBlinder
+ * Last modified  : 2021-06-01
+ *
+ * Github  : [https://github.com/Jerome-JJT/SuperBlinder]
+ *
+ */
+
 
 ob_start();
 
 $title = "SuperBlinder - Uploader";
 
+//Prefilled texts
 $success = isset($_SESSION["filling"]["success"]) ? $_SESSION["filling"]["success"] : "";
 $error = isset($_SESSION["filling"]["uploadError"]) ? $_SESSION["filling"]["uploadError"] : "";
 

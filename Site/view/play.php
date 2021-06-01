@@ -1,4 +1,14 @@
 <?php
+/**
+ * Author   : Jerome Jaquemet
+ * Email : jerome.jaquemet@cpnv.ch
+ * Project  : SuperBlinder
+ * Last modified  : 2021-06-01
+ *
+ * Github  : [https://github.com/Jerome-JJT/SuperBlinder]
+ *
+ */
+
 
 ob_start();
 
@@ -47,8 +57,8 @@ $tracksDir = "/tracks/";
     <div class="game-side">
       <div>
         <h4>Code de la partie</h4>
-        <p><?= $gameCode ?></p>
-        <p><?=$goodAnswers?> bonne(s) réponse(s) sur <?= $answered ?> - <?=$scoreRatio?>%</p>
+        <p><?=$gameCode?></p>
+        <p><?=$goodAnswers?> bonne(s) réponse(s) sur <?=$answered?> - <?=$scoreRatio?>%</p>
 
         <h4>Score</h4>
       </div
@@ -67,18 +77,22 @@ $tracksDir = "/tracks/";
 <script>
   document.getElementsByTagName("body")[0].onclick = function()
   {
+    //Hide indication text
     document.getElementById("indic-text").style.display = "none";
 
+    //Start audio and display options
     document.getElementsByTagName("body")[0].onclick = "";
     document.getElementById("audio").play();
     document.getElementById("selection").style.visibility = "visible";
 
+    //Display remaining time
     let timeout = 10;
     document.getElementById("remaining-time").textContent = timeout+" secondes restantes";
 
     let timer = setInterval(function() {
       timeout-=1;
 
+      //Display remaining time accorded
       if(timeout > 1){
         document.getElementById("remaining-time").textContent = timeout+" secondes restantes";
       }
@@ -87,6 +101,7 @@ $tracksDir = "/tracks/";
         document.getElementById("remaining-time").textContent = timeout+" seconde restante";
       }
 
+      //If timer finished, hide options and display answer's video
       if(timeout == -1){
         document.getElementById("remaining-time").textContent = "Fin";
         document.getElementById("selection").style.visibility = "hidden";
@@ -94,6 +109,7 @@ $tracksDir = "/tracks/";
         document.getElementById("video").play();
       }
 
+      //After 5 seconds, skips by sending wrong answer
       if(timeout < -5){
         window.location = "/?page=play&answer=-1";
       }
