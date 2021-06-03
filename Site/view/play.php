@@ -30,7 +30,7 @@ $tracksDir = "/tracks/";
   ><div style="width: 50%; height: 100%;">
     <div class="game-container">
       <p id="indic-text" style="text-align: center">
-        Cliquez démarrer la vidéo
+        Cliquez pour démarrer la musique
       </p>
       <div class="video-container">
         <video id="audio" style="width: 0">
