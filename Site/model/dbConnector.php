@@ -71,12 +71,12 @@ function openDBConnection()
   $dbConnection = null;
 
   $sql = 'mysql';
-  $hostname = 'localhost';
+  $hostname = 'mysql';
   $port = 3306;
   $charset = 'utf8';
-  $dbName = 'tpi21blind_db';
-  $userName = 'tpi21blind_db';
-  $userPwd = 'ROOTtoor8$';
+  $dbName = getenv('MYSQL_DATABASE');
+  $userName = getenv('MYSQL_USER');
+  $userPwd = getenv('MYSQL_PASSWORD');
   $dsn = $sql.':host='.$hostname.';dbname='.$dbName.';port='.$port.';charset='.$charset;
 
   try
@@ -85,7 +85,7 @@ function openDBConnection()
   }
   catch (PDOException $e)
   {
-    //echo("PDO error"); print_r($e); echo("<br>");
+    echo("PDO error"); print_r($e); echo("<br>");
   }
 
   return $dbConnection;

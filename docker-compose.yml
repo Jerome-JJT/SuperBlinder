@@ -1,0 +1,70 @@
+version: "3.7"
+
+services:
+ server:
+  # image: php:7-apache
+  build: buildserver
+  restart: on-failure
+
+
+  depends_on:
+   - mysql
+
+  ports:
+   - '8000:80'
+
+  volumes:
+   - ./Site:/var/www/html
+   - ./test:/usr/local/etc/php
+
+  environment:
+    MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
+    MYSQL_DATABASE: $MYSQL_DATABASE
+    MYSQL_USER: $MYSQL_USER
+    MYSQL_PASSWORD: $MYSQL_PASSWORD
+
+  networks:
+   - net
+
+ mysql:
+  # image: mysql
+  build: builddb
+  restart: on-failure
+
+#  stdin_open: true # docker run -i
+#  tty: true        # docker run -t
+
+
+  environment:
+    MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
+    MYSQL_DATABASE: $MYSQL_DATABASE
+    MYSQL_USER: $MYSQL_USER
+    MYSQL_PASSWORD: $MYSQL_PASSWORD
+
+
+#  ports:
+#   - 4040:3306
+   
+  volumes:
+   - db:/var/lib/mysql
+   - ./Documents:/app
+
+  networks:
+   - net
+
+
+ adminer:
+  image: adminer
+  restart: on-failure
+
+  ports:
+   - 8001:8080
+
+  networks:
+   - net
+
+networks:
+ net:
+
+volumes:
+ db:
